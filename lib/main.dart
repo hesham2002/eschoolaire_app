@@ -30,7 +30,7 @@ class MyApp extends StatelessWidget {
           fillColor: kSecondaryColor,
           enabledBorder: OutlineInputBorder(
             borderSide: const BorderSide(color: Colors.grey),
-            borderRadius: BorderRadius.circular(25),
+            borderRadius: BorderRadius.circular(26),
           ),
           disabledBorder: OutlineInputBorder(
             borderSide: const BorderSide(color: Colors.grey),

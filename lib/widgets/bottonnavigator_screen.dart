@@ -1,6 +1,8 @@
 
 import 'package:eschoolaire_app/constant.dart';
-import 'package:eschoolaire_app/profil/parents/home_parent_screen.dart';
+import 'package:eschoolaire_app/profil/admin/home_admin_screen.dart';
+
+
 import 'package:eschoolaire_app/widgets/profil_screen.dart';
 import 'package:flutter/material.dart';
 
@@ -17,7 +19,7 @@ class _BottomNavigationBarExampleState
   int _selectedIndex = 0;
 
   static const List<Widget> _widgetOptions = <Widget>[
-    HomeParentScreen(),
+    HomeAdminScreen(),
     StudentProfile(),
   ];
 

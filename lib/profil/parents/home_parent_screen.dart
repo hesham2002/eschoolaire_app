@@ -5,11 +5,12 @@
 
 import 'package:eschoolaire_app/constant.dart';
 import 'package:eschoolaire_app/profil/admin/maps_screen.dart';
-import 'package:eschoolaire_app/profil/admin/teachers/list_teachers.dart';
+
 import 'package:eschoolaire_app/profil/parents/grades_child_screen.dart';
 import 'package:eschoolaire_app/profil/parents/mychildren_screen.dart';
 import 'package:eschoolaire_app/profil/parents/notification_screen.dart';
 import 'package:eschoolaire_app/profil/parents/schedule_p_screen.dart';
+import 'package:eschoolaire_app/profil/parents/teachers_p_screen.dart';
 import 'package:flutter/material.dart';
 
 
@@ -92,7 +93,7 @@ class __HomeParentScreenState extends State<HomeParentScreen> {
                             Navigator.push(
                         context,
                         MaterialPageRoute(
-                            builder: (context) =>    TeachersPage()),
+                            builder: (context) =>  TeacherPage()  ),
                       );
                           }, 
                         ),

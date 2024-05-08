@@ -1,8 +1,9 @@
 
 import 'package:eschoolaire_app/constant.dart';
 import 'package:eschoolaire_app/firebase_options.dart';
+import 'package:eschoolaire_app/screens/intro_screen.dart';
 
-import 'package:eschoolaire_app/widgets/login_page.dart';
+
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 
@@ -42,7 +43,7 @@ class MyApp extends StatelessWidget {
           ),
         ),
       ),
-      home: const loginPage(),
+      home: const IntroScreen(),
     );
   }
 }

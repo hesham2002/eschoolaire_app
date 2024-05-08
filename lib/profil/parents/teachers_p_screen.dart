@@ -24,7 +24,7 @@ class Teacher {
   get active => null;
 }
 
-class TeachersPage extends StatelessWidget {
+class TeacherPage extends StatelessWidget {
   final List<Teacher> teachers = [
     Teacher(
       name: 'John Doe',
@@ -47,7 +47,7 @@ class TeachersPage extends StatelessWidget {
     // Add more teachers as needed
   ];
 
-   TeachersPage({super.key});
+   TeacherPage({super.key});
 
   @override
   Widget build(BuildContext context) {

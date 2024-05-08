@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "630497190888",
+    "project_id": "eschoolapp-547f5",
+    "storage_bucket": "eschoolapp-547f5.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:630497190888:android:3902c62e95fe11c195fa5d",
+        "android_client_info": {
+          "package_name": "com.eschool_app.eschool_app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB_qUc87UhkyWQYMLqz3Ls6vMraACjC2jA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

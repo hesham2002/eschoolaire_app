@@ -1,6 +1,6 @@
 
 import 'package:eschoolaire_app/constant.dart';
-import 'package:eschoolaire_app/widgets/login_page.dart';
+import 'package:eschoolaire_app/screens/login_page.dart';
 import 'package:flutter/material.dart';
 
 
@@ -176,7 +176,7 @@ class LogoutCard extends StatelessWidget {
                         Navigator.pop(
                           context,
                           MaterialPageRoute(
-                              builder: (context) => const loginPage()),
+                              builder: (context) => const LoginPage()),
                         );
                      
             },

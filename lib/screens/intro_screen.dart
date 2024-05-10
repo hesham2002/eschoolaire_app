@@ -1,7 +1,7 @@
 
 
 import 'package:eschoolaire_app/constant.dart';
-import 'package:eschoolaire_app/screens/auth_screen.dart';
+import 'package:eschoolaire_app/screens/login_page.dart';
 import 'package:eschoolaire_app/widgets/original_button.dart';
 import 'package:flutter/material.dart';
 
@@ -29,9 +29,9 @@ class IntroScreen extends StatelessWidget {
               OriginalButton(
               text: 'Get started ',
               onPressed: () { 
-                Navigator.push(
+                Navigator.pushReplacement(
               context,
-              MaterialPageRoute(builder: (context) => const AuthScreen()),
+              MaterialPageRoute(builder: (context) => const LoginPage()),
               );
                },
                bgColor: kPrimaryColor, 

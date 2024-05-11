@@ -1,5 +1,3 @@
-
-import 'package:eschoolaire_app/constant.dart';
 import 'package:flutter/material.dart';
 
 class Student {
@@ -10,10 +8,9 @@ class Student {
 }
 
 class MainListPage extends StatefulWidget {
-  const MainListPage({super.key});
+  const MainListPage({Key? key}) : super(key: key);
 
   @override
-  // ignore: library_private_types_in_public_api
   _MainListPageState createState() => _MainListPageState();
 }
 
@@ -160,10 +157,9 @@ class _MainListPageState extends State<MainListPage> {
 class ExamGradesPage extends StatefulWidget {
   final Student student;
 
-  const ExamGradesPage({super.key, required this.student});
+  const ExamGradesPage({Key? key, required this.student}) : super(key: key);
 
   @override
-  // ignore: library_private_types_in_public_api
   _ExamGradesPageState createState() => _ExamGradesPageState();
 }
 
@@ -189,7 +185,6 @@ class _ExamGradesPageState extends State<ExamGradesPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: kPrimaryColor,
         title: Text('Exam Grades for ${widget.student.name}'),
       ),
       body: Column(
@@ -201,33 +196,33 @@ class _ExamGradesPageState extends State<ExamGradesPage> {
             children: _semesters
                 .map(
                   (semester) => InkWell(
-                    onTap: () {
-                      setState(() {
-                        _selectedSemesterIndex = _semesters.indexOf(semester);
-                      });
-                    },
-                    child: Container(
-                      padding: const EdgeInsets.all(8),
-                      alignment: Alignment.center,
-                      decoration: BoxDecoration(
-                        border: Border.all(color: Colors.white, width: 2),
-                        borderRadius: BorderRadius.circular(20),
-                        color: _selectedSemesterIndex == _semesters.indexOf(semester)
-                            ? Colors.purpleAccent[100]
-                            : Colors.transparent,
-                      ),
-                      child: Text(
-                        semester,
-                        style: TextStyle(
-                          color: _selectedSemesterIndex == _semesters.indexOf(semester)
-                              ? Colors.white
-                              : Colors.black,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
+                onTap: () {
+                  setState(() {
+                    _selectedSemesterIndex = _semesters.indexOf(semester);
+                  });
+                },
+                child: Container(
+                  padding: const EdgeInsets.all(8),
+                  alignment: Alignment.center,
+                  decoration: BoxDecoration(
+                    border: Border.all(color: Colors.grey),
+                    borderRadius: BorderRadius.circular(20),
+                    color: _selectedSemesterIndex == _semesters.indexOf(semester)
+                        ? Colors.purpleAccent[100]
+                        : Colors.transparent,
+                  ),
+                  child: Text(
+                    semester,
+                    style: TextStyle(
+                      color: _selectedSemesterIndex == _semesters.indexOf(semester)
+                          ? Colors.white
+                          : Colors.black,
+                      fontWeight: FontWeight.bold,
                     ),
                   ),
-                )
+                ),
+              ),
+            )
                 .toList(),
           ),
           const SizedBox(height: 20),
@@ -270,16 +265,12 @@ class _ExamGradesPageState extends State<ExamGradesPage> {
             ),
           ),
           const SizedBox(height: 20),
-          Positioned(
-            bottom: 20,
-            right: 20,
-            child: FloatingActionButton(
-              onPressed: () {
-                // Implement sending grades to parent widget or any other action here
-              },
-              backgroundColor: Colors.purpleAccent[100],
-              child: const Icon(Icons.send),
-            ),
+          FloatingActionButton(
+            onPressed: () {
+              // Implement sending grades to parent widget or any other action here
+            },
+            backgroundColor: Colors.purpleAccent[100],
+            child: const Icon(Icons.send),
           ),
         ],
       ),
@@ -320,6 +311,7 @@ class _ExamGradesPageState extends State<ExamGradesPage> {
     );
   }
 }
+
 class _StudentSearchDelegate extends SearchDelegate<String> {
   @override
   List<Widget> buildActions(BuildContext context) {

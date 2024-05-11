@@ -17,10 +17,7 @@ import 'package:flutter/foundation.dart'
 class DefaultFirebaseOptions {
   static FirebaseOptions get currentPlatform {
     if (kIsWeb) {
-      throw UnsupportedError(
-        'DefaultFirebaseOptions have not been configured for web - '
-        'you can reconfigure this by running the FlutterFire CLI again.',
-      );
+      return web;
     }
     switch (defaultTargetPlatform) {
       case TargetPlatform.android:
@@ -28,15 +25,9 @@ class DefaultFirebaseOptions {
       case TargetPlatform.iOS:
         return ios;
       case TargetPlatform.macOS:
-        throw UnsupportedError(
-          'DefaultFirebaseOptions have not been configured for macos - '
-          'you can reconfigure this by running the FlutterFire CLI again.',
-        );
+        return macos;
       case TargetPlatform.windows:
-        throw UnsupportedError(
-          'DefaultFirebaseOptions have not been configured for windows - '
-          'you can reconfigure this by running the FlutterFire CLI again.',
-        );
+        return windows;
       case TargetPlatform.linux:
         throw UnsupportedError(
           'DefaultFirebaseOptions have not been configured for linux - '
@@ -49,9 +40,19 @@ class DefaultFirebaseOptions {
     }
   }
 
+  static const FirebaseOptions web = FirebaseOptions(
+    apiKey: 'AIzaSyC29HfcDSjmtlCTZEGLTTqSbSKs5eAymxE',
+    appId: '1:630497190888:web:d9305464c7610f6a95fa5d',
+    messagingSenderId: '630497190888',
+    projectId: 'eschoolapp-547f5',
+    authDomain: 'eschoolapp-547f5.firebaseapp.com',
+    storageBucket: 'eschoolapp-547f5.appspot.com',
+    measurementId: 'G-72GTH9VXWK',
+  );
+
   static const FirebaseOptions android = FirebaseOptions(
     apiKey: 'AIzaSyB_qUc87UhkyWQYMLqz3Ls6vMraACjC2jA',
-    appId: '1:630497190888:android:3902c62e95fe11c195fa5d',
+    appId: '1:630497190888:android:1891724a1cd707a695fa5d',
     messagingSenderId: '630497190888',
     projectId: 'eschoolapp-547f5',
     storageBucket: 'eschoolapp-547f5.appspot.com',
@@ -59,11 +60,29 @@ class DefaultFirebaseOptions {
 
   static const FirebaseOptions ios = FirebaseOptions(
     apiKey: 'AIzaSyDBvQcbdEnCSlb5TZ5H7LpNZH1nL-gjeco',
-    appId: '1:630497190888:ios:8b1ea5f65a71cbb795fa5d',
+    appId: '1:630497190888:ios:1c5d71aa98e4d24b95fa5d',
     messagingSenderId: '630497190888',
     projectId: 'eschoolapp-547f5',
     storageBucket: 'eschoolapp-547f5.appspot.com',
-    iosBundleId: 'com.eschoolapp.eschoolApp',
+    iosBundleId: 'com.example.eschoolaireApp',
   );
 
+  static const FirebaseOptions macos = FirebaseOptions(
+    apiKey: 'AIzaSyDBvQcbdEnCSlb5TZ5H7LpNZH1nL-gjeco',
+    appId: '1:630497190888:ios:1c5d71aa98e4d24b95fa5d',
+    messagingSenderId: '630497190888',
+    projectId: 'eschoolapp-547f5',
+    storageBucket: 'eschoolapp-547f5.appspot.com',
+    iosBundleId: 'com.example.eschoolaireApp',
+  );
+
+  static const FirebaseOptions windows = FirebaseOptions(
+    apiKey: 'AIzaSyC29HfcDSjmtlCTZEGLTTqSbSKs5eAymxE',
+    appId: '1:630497190888:web:cc8f3783b16081a095fa5d',
+    messagingSenderId: '630497190888',
+    projectId: 'eschoolapp-547f5',
+    authDomain: 'eschoolapp-547f5.firebaseapp.com',
+    storageBucket: 'eschoolapp-547f5.appspot.com',
+    measurementId: 'G-34ER0HW1MP',
+  );
 }

@@ -85,6 +85,8 @@ class _LoginPageState extends State<LoginPage> {
                         if (_formKey.currentState!.validate()) {
                           setState(() {
                             isLoading = true;
+                            email = _emailController.text;
+                            password = _passwordController.text;
                           });
                           try {
                             UserCredential user = await FirebaseAuth.instance
@@ -95,21 +97,22 @@ class _LoginPageState extends State<LoginPage> {
 
                             ScaffoldMessenger.of(context).showSnackBar(
                               const SnackBar(
-                                  content: Text('login Successfully')),
+                                  content: Text('Login Successfully')),
                             );
                             Navigator.pushReplacement(
                               context,
                               MaterialPageRoute(
                                 builder: (context) =>
-                                    const BottomNavigationBarExample(),
+                                 BottomNavigationBarExample(),
                               ),
                             );
                           } on FirebaseAuthException catch (e) {
                             if (e.code == 'user-not-found') {
                               ScaffoldMessenger.of(context).showSnackBar(
-                                  SnackBar(
-                                      content: Text(
-                                          'No user found for that email')));
+                                SnackBar(
+                                    content: Text(
+                                        'No user found for that email')),
+                              );
                             } else if (e.code == 'wrong-password') {
                               ScaffoldMessenger.of(context).showSnackBar(SnackBar(
                                   content: Text(
@@ -131,6 +134,7 @@ class _LoginPageState extends State<LoginPage> {
                       bgColor: kPrimaryColor,
                       textColor: Colors.white,
                     ),
+
                     SizedBox(height: 10),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,

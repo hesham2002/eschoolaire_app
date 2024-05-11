@@ -23,15 +23,18 @@ class _SignUpPageState extends State<SignUpPage> {
   final TextEditingController _phoneController = TextEditingController();
 
   bool _isPasswordVisible = false;
+  bool _isConfirmPasswordVisible = false;
   bool isLoading = false;
-  String? email;
-  String? password;
-  String? userName;
-  String? confirmedPassword;
-  String? phoneNumber;
+
   void _togglePasswordVisibility() {
     setState(() {
       _isPasswordVisible = !_isPasswordVisible;
+    });
+  }
+
+  void _toggleConfirmPasswordVisibility() {
+    setState(() {
+      _isConfirmPasswordVisible = !_isConfirmPasswordVisible;
     });
   }
 
@@ -106,13 +109,13 @@ class _SignUpPageState extends State<SignUpPage> {
                   hintText: "Confirm Password",
                   prefixIcon: const Icon(Icons.lock, color: kPrimaryColor),
                   suffixIcon: IconButton(
-                    icon: _isPasswordVisible
+                    icon: _isConfirmPasswordVisible
                         ? Icon(Icons.visibility)
                         : Icon(Icons.visibility_off),
-                    onPressed: _togglePasswordVisibility,
+                    onPressed: _toggleConfirmPasswordVisibility,
                   ),
                 ),
-                obscureText: !_isPasswordVisible,
+                obscureText: !_isConfirmPasswordVisible,
                 validator: (value) {
                   if (value!.isEmpty) {
                     return 'Please confirm your password';
@@ -145,28 +148,30 @@ class _SignUpPageState extends State<SignUpPage> {
                   if (_formKey.currentState!.validate()) {
                     setState(() {
                       isLoading = true;
-                      // Assign values from text controllers to variables
-                      email = _emailController.text;
-                      password = _passwordController.text;
-                      userName = _userNameController.text;
-                      phoneNumber = _phoneController.text;
                     });
                     try {
+                      final email = _emailController.text;
+                      final password = _passwordController.text;
+                      final userName = _userNameController.text;
+                      final phoneNumber = _phoneController.text;
+
                       UserCredential userCredential = await FirebaseAuth
                           .instance
                           .createUserWithEmailAndPassword(
-                        email: email!,
-                        password: password!,
+                        email: email,
+                        password: password,
                       );
 
                       if (userCredential.user != null) {
                         UserModel userModel = UserModel(
-                          email: email!,
-                          userName: userName!,
+                          email: email,
+                          userName: userName,
                           isAdmin: false,
-                          phoneNumber: phoneNumber!,
+                          phoneNumber: phoneNumber,
                         );
+
                         await FireStoreHelper.saveUserInFirestore(userModel);
+
                         ScaffoldMessenger.of(context).showSnackBar(
                           const SnackBar(
                             content: Text('Registration successful'),
@@ -178,7 +183,7 @@ class _SignUpPageState extends State<SignUpPage> {
                       if (e.code == 'weak-password') {
                         ScaffoldMessenger.of(context).showSnackBar(SnackBar(
                             content:
-                            Text('The password provided is too weak')));
+                                Text('The password provided is too weak')));
                       } else if (e.code == 'email-already-in-use') {
                         ScaffoldMessenger.of(context).showSnackBar(SnackBar(
                             content: Text(
@@ -186,7 +191,7 @@ class _SignUpPageState extends State<SignUpPage> {
                       }
                     } catch (e) {
                       ScaffoldMessenger.of(context).showSnackBar(
-                          SnackBar(content: Text('incorrect data : $e')));
+                          SnackBar(content: Text('An error occurred: $e')));
                     } finally {
                       setState(() {
                         isLoading = false;
@@ -197,7 +202,6 @@ class _SignUpPageState extends State<SignUpPage> {
                 bgColor: kPrimaryColor,
                 textColor: Colors.white,
               ),
-
               const SizedBox(height: 20),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,

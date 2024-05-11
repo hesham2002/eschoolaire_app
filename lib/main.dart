@@ -1,7 +1,12 @@
 
 import 'package:eschoolaire_app/constant.dart';
 import 'package:eschoolaire_app/firebase_options.dart';
+import 'package:eschoolaire_app/profil/admin/home_admin_screen.dart';
+import 'package:eschoolaire_app/profil/parents/home_parent_screen.dart';
+import 'package:eschoolaire_app/profil/teachers/home_teachers_screen.dart';
 import 'package:eschoolaire_app/screens/intro_screen.dart';
+import 'package:eschoolaire_app/widgets/bottonnavigator_screen.dart';
+import 'package:firebase_app_check/firebase_app_check.dart';
 
 
 import 'package:firebase_core/firebase_core.dart';
@@ -12,6 +17,7 @@ void main() async {
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
+  await FirebaseAppCheck.instance.activate();
   runApp(const MyApp());
 }
 
@@ -43,7 +49,7 @@ class MyApp extends StatelessWidget {
           ),
         ),
       ),
-      home: const IntroScreen(),
+      home: const HomeAdminScreen(),
     );
   }
 }
